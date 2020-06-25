@@ -1,0 +1,36 @@
+.news__list {
+	max-width: 700px;
+}
+
+.news__list__item {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 30px;
+}
+
+.news__list__item__img {
+	max-width: 230px;
+	margin-right: 50px;
+}
+
+.news__list__item__title {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+@media only screen and (max-width: 820px) {
+	.news__list {
+		width: 100%;
+	}
+
+	.news__list__item {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 30px;
+	}
+
+	.news__list__item__img {
+		margin-right: 0;
+		margin-bottom: 10px;
+	}
+} 

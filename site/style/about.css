@@ -1,0 +1,15 @@
+.about__content {
+	max-width: 700px;
+}
+
+.about__content__p {
+	margin-bottom: 30px;
+}
+
+@media only screen and (max-width: 820px) {
+
+	.about__content {
+		max-width: 100%;
+	}
+
+}

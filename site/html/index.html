@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Олимпиада по морфологии человека БГМУ</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="../style/index.css">
+	<link rel="stylesheet" type="text/css" href="../style/news.css">
+	<link rel="stylesheet" type="text/css" href="../style/about.css">
+	<link rel="stylesheet" type="text/css" href="../style/archive.css">
+	<link rel="stylesheet" type="text/css" href="../style/tasks.css">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
+</head>
+<body>
+	<header class="header">
+		<a class="header__title" href="#" onclick="showContent('news')">
+			<span class="header__title_light">
+				ОЛИМПИАДЫ
+				<br>
+				ПО МОРФОЛОГИИ ЧЕЛОВЕКА	
+			</span>
+			//БГМУ
+		</a>
+		<a class="header__link header__link_medium" href="#" onclick="showContent('register')">
+			<div class="header__link__text">Регистрация</div>
+		</a>
+		<a class="header__link header__link_light" href="#" onclick="showContent('login')">
+			<div class="header__link__text">Вход</div>
+		</a>
+	</header>
+	<nav class="nav">
+		<a class="nav__link" href="#" onclick="showContent('news')">Новости</a>
+		<a class="nav__link" href="#" onclick="showContent('about')">Об олимпиаде</a>
+		<a class="nav__link" href="#" onclick="showContent('archive')">Архив</a>
+		<a class="nav__link" href="#" onclick="showContent('tasks')">Задания</a>
+	</nav>
+	<main class="main" id="main">
+
+	</main>
+
+	<template id="news">
+		<div class="main__section">
+			<div class="main__section__title">
+				Новости
+			</div>
+			<div class="news__list">
+				<div class="news__list__item">
+					<img class="news__list__item__img" src="../assets/news.png">
+					<div class="news__list__item__wrapper">
+						<div class="news__list__item__title">
+							Укрепление и развитие структуры
+						</div>
+						<div class="news__list__item__content">
+							Равным образом укрепление и развитие структуры обеспечивает широкому кругу (специалистов) участие в формировании систем массового участия.
+						</div>
+					</div>
+				</div>
+				<div class="news__list__item">
+					<img class="news__list__item__img" src="../assets/news.png">
+					<div>
+						<div class="news__list__item__title">
+							Задачи и принципы
+						</div>
+						<div class="news__list__item__content">
+							Идейные соображения высшего порядка, а также консультация с широким активом играет важную роль в формировании направлений прогрессивного развития. Значимость этих проблем настолько очевидна, что рамки и место обучения кадров представляет собой интересный эксперимент проверки модели развития.
+						</div>	
+					</div>
+				</div>
+			</div> 
+		</div>
+	</template>
+	<template id="about">
+		<div class="main__section about">
+			 <div class="main__section__title">
+				Об олимпиаде
+			</div>
+			<div class="about__content">
+				<p class="about__content__p">
+					Не следует, однако забывать, что укрепление и развитие структуры играет важную роль в формировании систем массового участия. Идейные соображения высшего порядка, а также постоянное информационно—пропагандистское обеспечение нашей деятельности влечет за собой процесс внедрения и модернизации соответствующий условий активизации. Идейные соображения высшего порядка, а также консультация с широким активом влечет за собой процесс внедрения и модернизации новых предложений. Повседневная практика показывает, что начало повседневной работы по формированию позиции влечет за собой процесс внедрения и модернизации форм развития.
+				</p>
+				<p class="about__content__p">
+					Не следует, однако забывать, что укрепление и развитие структуры обеспечивает широкому кругу (специалистов) участие в формировании позиций, занимаемых участниками в отношении поставленных задач, Не следует, однако забывать, что консультация с широким активом играет важную роль в формировании системы обучения кадров, соответствует насущным потребностям. Таким образом консультация с широким активом требуют определения и уточнения модели развития. Товарищи! сложившаяся структура организации играет важную роль в формировании системы обучения кадров, соответствует насущным потребностям. Повседневная практика показывает, что постоянное информационно—пропагандистское обеспечение нашей деятельности в значительной степени обуславливает создание существенных финансовых и административных условий. Таким образом постоянный количественный рост и сфера нашей
+			</div>
+		</div>
+	</template>
+	<template id="archive">
+		<div class="main__section archive">
+			 <div class="main__section__title">
+				Архив
+			</div>
+			<a class="archive__button" href="#">
+				Задания олимпиады 2018 г.
+			</a>
+			<a class="archive__button" href="#">
+				Задания олимпиады 2019 г.
+			</a>
+		</div>
+	</template>
+	<template id="tasks">
+		<div class="main__section tasks">
+			 <div class="main__section__title">
+				Задания олимпиады
+			</div>
+			<div class="tasks__section"> 
+				<p class="tasks__section__p">
+					1. Не следует, однако забывать, что укрепление и развитие структуры играет важную роль в формировании систем массового участия. Идейные соображения высшего порядка, а также постоянное информационно-пропагандистское обеспечение нашей деятельности влечет за собой процесс внедрения и модернизации соответствующий условий активизации.
+				</p>
+				<input class="tasks__section__input" type="text">
+			</div>
+			<div class="tasks__section"> 
+				<p class="tasks__section__p">
+					2. Идейные соображения высшего порядка, а также консультация с широким активом влечет за собой процесс внедрения и модернизации новых предложений. Повседневная практика показывает, что начало повседневной работы по формированию позиции влечет за собой процесс внедрения и модернизации форм развития.
+				</p>
+				<input class="tasks__section__input" type="text">
+			</div>
+			<div class="tasks__section"> 
+				<p class="tasks__section__p">
+					3. Не следует, однако забывать, что укрепление и развитие структуры обеспечивает широкому кругу (специалистов) участие в формировании позиций, занимаемых участниками в отношении поставленных задач. Не следует, однако забывать, что консультация с широким активом играет важную роль в формировании системы обучения кадров, соответствует насущным потребностям.
+				</p>
+				<input class="tasks__section__input" type="text">
+			</div>
+		</div>
+	</template>
+	<template id="register">
+		<form class="main__section form">
+			<div class="form__title">
+				Регистрация
+			</div>
+			<div class="form__group">
+				<label for="register-name">Имя</label>
+				<br>
+				<input class="form__control" type="text" id="register-name">
+			</div>
+			<div class="form__group">
+				<label for="register-surname">Фамилия</label>
+				<br>
+				<input class="form__control" type="text" id="register-surname">
+			</div>
+			<div class="form__group">
+				<label for="register-studak">Номер студенческого билета</label>
+				<br>
+				<input class="form__control" type="text" id="register-studak">
+			</div>
+			<div class="form__group">
+				<label for="register-pass">Пароль</label>
+				<br>
+				<input class="form__control" type="text" id="register-pass">
+			</div>
+			<div class="form__group">
+				<input class="form__submit" type="submit" id="register-submit" value="Зарегестрироваться">
+			</div>
+		</form>
+	</template>
+	<template id="login">
+		<form class="main__section form">
+			<div class="form__title">
+				Вход
+			</div>
+			<div class="form__group">
+				<label for="login-studak">Номер студенческого билета</label>
+				<br>
+				<input class="form__control" type="text" id="login-studak">
+			</div>
+			<div class="form__group">
+				<label for="login-pass">Пароль</label>
+				<br>
+				<input class="form__control" type="text" id="login-pass">
+			</div>
+			<div class="form__group">
+				<input class="form__submit" type="submit" id="login-submit" value="Войти">
+			</div>
+		</form>
+	</template>
+	<script type="text/javascript" src="../script/index.js"></script>
+</body>
+</html>

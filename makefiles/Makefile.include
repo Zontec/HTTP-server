@@ -1,0 +1,15 @@
+include makefiles/Makefile.config
+#==========Sources========
+
+SRCS    =main.c
+SRCS	+=$(SRC_DIR)/http.c
+
+#==========Objects========
+OBJECTS = $(addprefix $(BUILD_DIR)/, $(addsuffix .o, $(basename $(SRCS))))
+
+#==========Logic==========
+
+$(BUILD_DIR)/%.o:%.c
+	@echo $(OBJECTS)
+	mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $< -o $@
