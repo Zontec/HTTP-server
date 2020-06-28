@@ -3,6 +3,7 @@ include makefiles/Makefile.config
 
 SRCS    =main.c
 SRCS	+=$(SRC_DIR)/http.c
+SRCS	+=$(SRC_DIR)/conntools.c
 
 #==========Objects========
 OBJECTS = $(addprefix $(BUILD_DIR)/, $(addsuffix .o, $(basename $(SRCS))))

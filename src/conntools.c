@@ -1,37 +1,53 @@
 #include "includes.h"
 #include "conntools.h"
-
+#include <signal.h>
 #define NO_CONNECTION       0
 
 #define ALIVE               1
 #define DEAD                0
 
-extern int32_t connection_pointer;
-extern bool connections_alive_state[MAX_NUMBER_OF_CONNECTIONS];
+ int32_t connection_pointer;
+ bool connections_alive_state[MAX_NUMBER_OF_CONNECTIONS];
 
-void  __clean(pthread_t *connections, const size_t size)
+void  __clean(pthread_t *connections, size_t *size)
 {
-
+    free(connections);
+    *size = 0;
 }
 
 void  __fragmentate(pthread_t *connections, const size_t size)
 {
-
+    for(int i = 0; i < size; i++)
+    {
+        if(!conntools_is_connection_alive(connections[i]))
+        {
+            int pointer = i;
+            if(i == 0)
+                connections[i] = DEAD;
+            else
+                while(pointer > 0 && connections[pointer - 1] == DEAD)
+                {
+                    connections[pointer - 1] = connections[pointer];
+                    connections[pointer--] = DEAD;
+                }   
+        }
+    }
 }
 
-bool  is_connection_alive(pthread_t connection)
+bool conntools_is_connection_alive(pthread_t connection)
 {
     //if connection closed - kill returns not 0
-    return pthread_kill(connection, 0) == 0 ? true : false;
+    return (pthread_kill(connection, 0) == 0 ? true : false);
 }
 
-void  close_connection_hard(pthread_t connection)
+void  conntools_close_connection_hard(pthread_t connection)
 {
-    if(is_connection_alive(connection))
+    if(conntools_is_connection_alive(connection))
         pthread_cancel(connection);
 }
 
-void  clear_connections(pthread_t *connections, const size_t size)
+void  conntools_clear_connections(pthread_t *connections,
+                             const size_t size)
 {
     connection_pointer = 0;
     for(int i = 0; i < size; i++)
@@ -39,14 +55,15 @@ void  clear_connections(pthread_t *connections, const size_t size)
         pthread_t *tmp_connection = &connections[i];
         if(*tmp_connection != NO_CONNECTION && 
             connections_alive_state[i] == ALIVE)
-            (void)close_connection_hard(*tmp_connection);
+            pthread_kill(*tmp_connection, SIGKILL);
         
         *tmp_connection = NO_CONNECTION;
         connections[i] = DEAD;
     }
 }
 
-int32_t  get_next_empty_connection_place(pthread_t *connections, const size_t size)
+int32_t  __conntools_get_next_empty_connection_place(pthread_t *connections,
+                                                 const size_t size)
 {
     int tries = 0;
     int tmp_connection_pointer = connection_pointer;
@@ -57,11 +74,26 @@ int32_t  get_next_empty_connection_place(pthread_t *connections, const size_t si
     }
 }
 
-bool  add_connection(const int connection_descriptor, 
+pthread_t *__get_next_empty_connection_place(pthread_t *connections, const size_t size) 
+{
+
+    for(int i = 0; i < size; i++)
+    {
+        if(connections[i] == DEAD)
+        {
+            connection_pointer = i;
+            return &connections[i];
+        }
+    }
+    __fragmentate(connections, size);
+    return NULL;
+}
+
+bool  conntools_add_connection(const int connection_descriptor, 
                         pthread_t *connections, const size_t size, 
                         callback func, callback_args args)
 {
-    if(connection_pointer = get_next_empty_connection_place(connections, size) < 0)
+    if(connection_pointer = __get_next_empty_connection_place(connections, size) == NULL)
     {
         perror("Connection limit reached!");
         return false;

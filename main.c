@@ -12,28 +12,11 @@ static void CDECL cleanup(void) __attribute__ ((destructor));
 
 static void CDECL init(void) __attribute__ ((constructor));
 
-void CDECL *connection_thread_handle(void *arg)
-{
-    while(true)
-    {
 
-    }
-}
 
-int pos(const char *str)
-{
-    int len = strlen(str);
-    for(int i = 0; i < len - 3; i++)
-    {
-        if(str[i] == 'G' && str[i + 1] == 'E' && str[i + 2] == 'T')
-            return i + 4;
-    }
-    return -1;
-}
 
 int CDECL main(int argc, char **argv)
 {
-    
 
     int listening_socket_descriptior;
     int new_connected_descriptior;
@@ -89,12 +72,13 @@ int CDECL main(int argc, char **argv)
         char recive_buf[MAX_RECIVE_PACKET_LEN];
         int recived_len = recv(new_connected_descriptior, recive_buf, sizeof(recive_buf), 0);
         
-        int posi = pos(recive_buf);
+        struct http_frame frame;
+        http_parse(&frame, recive_buf, strlen(recive_buf));
 
         char data[MAX_SEND_PACKET_LEN] = "\0";
         char buf[MAX_SEND_PACKET_LEN] = "\0";
 
-        if(recive_buf[posi] == '/' && recive_buf[posi + 1] == ' ')
+        if(!strcmp(frame.path_request, "/"))
         {
 
             int fd = open("site/html/index.html", O_RDONLY);

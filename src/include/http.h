@@ -1,3 +1,6 @@
+#ifndef __HTTP_H__
+#define __HTTP_H__
+
 #include "includes.h"
 
 typedef unsigned char u_char;
@@ -43,3 +46,4 @@ void __attribute__((cdecl)) http_parse(struct http_frame *http,
 
 
 
+#endif
